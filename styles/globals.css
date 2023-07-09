@@ -105,3 +105,9 @@ a {
     color-scheme: dark;
   }
 }
+
+#servicesSlide {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
