@@ -31,7 +31,7 @@ const Services = () => {
                             </Text>
                             <Hide below="md">
                                 <Text fontWeight="400">
-                                    As consistent winners of Houzz's Best Service award, you can trust us to deliver quality, each and every time no matter what.
+                                    As consistent winners of the Houzz Best Service award, you can trust us to deliver quality, each and every time no matter what.
                                 </Text>
                             </Hide>
                         </VStack>
