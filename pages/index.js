@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar'
 import RequestButton from '@/components/RequestButton'
 import { MdOpenInNew } from "react-icons/md"
 import Services from '@/components/Services'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -18,10 +19,10 @@ export default function Home() {
       </Head>
       <Navbar/>
       <Flex id="hero" height={{ base: "100vh", md: "100vh" }} width="100vw" bg="#F6D9AC" justify={{ base: "center", md: "space-around"}}  paddingX="1rem" align="center" overflow="hidden" fontFamily="Manrope" paddingTop={{ base: "4rem", md: "3rem" }} direction={{ base: "column", md: "row" }}>
-        <VStack width={{ base: "95%", md: "47.5%" }} height={{ base: "42.5vh", md: "90%" }} position="relative" marginBottom={{ base: "1rem", md: "0" }}>
+        <VStack width={{ base: "95%", md: "47.5%" }} height={{ base: "42.5vh", md: "90%" }} position="relative" marginBottom={{ base: "1rem", md: "0" }} bg="none">
           <Image src="hero-1.jpg" alt="hero-1" width="100%" height="100%" fit="cover" position="relative" zIndex="1" borderRadius="2rem"/>
           <VStack textAlign="right" justify="start" position="absolute" zIndex="2" right="0" top="0" align="end" fontWeight="700" spacing="0" overflow="hidden" padding="2rem">
-            <Text color="white" fontSize="0.85rem" display={{ base: "none", md: "block"}}>When Carpentry Meets Character</Text>
+            <Text color="white" fontSize="0.85rem" display={{ base: "none", md: "block"}} textShadow="black 0.25rem 0.25rem 2rem">When Carpentry Meets Character</Text>
             <Text color="white" fontSize={{ base: "1.75rem", md: "2.25rem" }} textShadow="black 0.25rem 0.25rem 2rem">Crafting Excellence,<br/>In Every Grain.</Text>
           </VStack>
           <VStack justify="end" position="absolute" zIndex="2" left="0" bottom="0" align="start" fontWeight="700" spacing="0" overflow="hidden" padding="2rem">
@@ -59,6 +60,7 @@ export default function Home() {
         </VStack>
       </Flex>
       <Services/>
+      <Footer/>
     </>
   )
 }

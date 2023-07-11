@@ -5,8 +5,10 @@ import RequestButton from "./RequestButton"
 import ServicePopUp from "./ServicePopUp"
 import Carousel from "./Carousel"
 import { FcApproval, FcCustomerSupport, FcFlashOn } from "react-icons/fc"
+import { useRouter } from "next/router"
 
 const Services = () => {
+    const router = useRouter();
     return (
         <Flex id="servicesSlide" height="100vh" width="100vw" backgroundImage="services.jpg" fontFamily="Manrope" direction={{ base: "column", md: "row" }} padding={{ base: "1rem", md: "2rem" }} justify="space-between">
             <VStack align={{ base: "center", md: "start" }} flex="1.25" marginRight={{ base: "0", md: "1rem" }} marginBottom={{ base: "1rem", md: "0" }} spacing={{ base: "1rem", md: "2rem" }}>
