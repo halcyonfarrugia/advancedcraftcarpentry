@@ -7,8 +7,10 @@ import RequestButton from '@/components/RequestButton'
 import { MdOpenInNew } from "react-icons/md"
 import Services from '@/components/Services'
 import Footer from '@/components/Footer'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -42,16 +44,16 @@ export default function Home() {
             </Text>
           </VStack>
           <Flex justify="space-between" width="100%" height={{ base: "100vh", md: "40%" }} display={{ base: "none", lg: "flex" }} direction={{ base: "column", md: "row" }}>
-            <VStack id="services" width="47.5%" bg="#FF7252" position="relative" color="white" borderRadius="1rem">
-              <Text color="white" fontSize="1rem" position="absolute" padding="2rem" top="0" left="0">Explore Our Services</Text>
-              <Text color="white" fontSize="1.75rem" position="absolute" padding="2rem" bottom="0" left="0" fontWeight="700" textShadow="black 0.25rem 0.25rem 2rem">Services</Text>
+            <VStack id="services" width="47.5%" bg="#FF7252" position="relative" color="white" borderRadius="1rem" onClick={() => router.push('/services')} _hover={{ cursor: "pointer" }}>
+              <Text color="white" fontSize="1rem" position="absolute" padding="2rem" top="0" left="0" _hover={{ textDecor: "underline" }}>Explore Our Services</Text>
+              <Text color="white" fontSize="1.75rem" position="absolute" padding="2rem" bottom="0" left="0" fontWeight="700" textShadow="black 0.25rem 0.25rem 2rem" _hover={{ textDecor: "underline" }}>Services</Text>
               <Text position="absolute" zIndex="2" right="0" top="0" color="white" padding="2rem" fontSize="2rem" fontWeight="700" _hover={{ cursor: "pointer" }}>
                 <MdOpenInNew />
               </Text>
             </VStack>
-            <VStack id="contact-us" width="47.5%" bg="#3E60A3" position="relative" color="white" borderRadius="1rem">
-              <Text color="white" fontSize="1rem" position="absolute" padding="2rem" top="0" left="0">Got a Question?</Text>
-              <Text color="white" fontSize="1.75rem" position="absolute" padding="2rem" bottom="0" left="0" fontWeight="700" textShadow="black 0.25rem 0.25rem 2rem">Contact Us</Text>
+            <VStack id="contact-us" width="47.5%" bg="#3E60A3" position="relative" color="white" borderRadius="1rem" onClick={() => router.push('/about')} _hover={{ cursor: "pointer" }}>
+              <Text color="white" fontSize="1rem" position="absolute" padding="2rem" top="0" left="0" _hover={{ textDecor: "underline" }}>Learn More</Text>
+              <Text color="white" fontSize="1.75rem" position="absolute" padding="2rem" bottom="0" left="0" fontWeight="700" textShadow="black 0.25rem 0.25rem 2rem" _hover={{ textDecor: "underline" }}>Why Us?</Text>
               <Text position="absolute" zIndex="2" right="0" top="0" color="white" padding="2rem" fontSize="2rem" fontWeight="700" _hover={{ cursor: "pointer" }}>
                 <MdOpenInNew />
               </Text>

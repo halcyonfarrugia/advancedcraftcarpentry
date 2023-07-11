@@ -48,7 +48,7 @@ const RequestButton = ({ width }) => {
 
     return (
         <>
-        <Button rightIcon={<BsHammer/>} onClick={onOpen} fontWeight="700">Request a Quote</Button>
+        <Button rightIcon={<BsHammer/>} onClick={onOpen} fontWeight="700" padding="1rem">Request a Quote</Button>
         <Modal isOpen={isOpen} onClose={onClose} fontFamily="Manrope" size="3xl">
                 <ModalOverlay />
                 <ModalContent>

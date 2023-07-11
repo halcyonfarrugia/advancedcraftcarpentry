@@ -16,7 +16,7 @@ const Service = () => {
         <VStack height="100vh" width="100vw" backgroundImage="services.jpg" id="servicesSlide" overflow="scroll">
             <Navbar/>
             <Flex marginTop={{ base: "1rem", md: "3rem" }} height={{ base: "98vh", md: "90vh" }} width="100vw"  fontFamily="Manrope" direction={{ base: "column", md: "row" }} padding={{ base: "1rem", md: "2rem" }} justify="space-between">
-                <VStack align={{ base: "center", md: "start" }} flex="1.25" marginRight={{ base: "0", md: "1rem" }} marginBottom={{ base: "1rem", md: "0" }} spacing={{ base: "1rem", md: "2rem" }}>
+                <VStack align={{ base: "center", md: "start" }} flex="1.25" marginRight={{ base: "0", md: "1rem" }} marginBottom={{ base: "1rem", md: "0" }} spacing={{ base: "1rem", md: "1rem" }}>
                     <Text fontWeight="700" fontSize={{ base: "2rem", md: "2.25rem" }} color="white" textShadow="black 0.1rem 0.1rem 1.5rem">
                         Our Services
                     </Text>
@@ -73,7 +73,7 @@ const Service = () => {
                         </HStack>
                     </VStack>
                     <Hide below="md">
-                        <RequestButton width="15rem"/>
+                        <RequestButton/>
                     </Hide>
                 </VStack>
                 <Carousel/>

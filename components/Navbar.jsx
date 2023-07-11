@@ -2,7 +2,9 @@ import { Button, Drawer, DrawerBody, DrawerContent, DrawerOverlay, DrawerCloseBu
 import { useRouter } from "next/router";
 import "@fontsource/manrope/700.css"
 import { GiHamburgerMenu } from "react-icons/gi"
+import { MdCall } from "react-icons/md"
 import RequestButton from "./RequestButton";
+import ContactButton from "./ContactButton";
 
 const Navbar = () => {
     const router = useRouter();
@@ -13,20 +15,20 @@ const Navbar = () => {
             <Text _hover={{ cursor: "pointer", textDecor: "underline"}} display={{ base: "none", md: "block"}} onClick={() => router.push('/')}>
                 Home
             </Text>
-            <Text _hover={{ cursor: "pointer"}} display={{ base: "none", md: "block"}}>
+            <Text _hover={{ cursor: "pointer", textDecor: "underline"}} display={{ base: "none", md: "block"}} onClick={() => router.push('/about')}>
                 About
             </Text>
             <Text _hover={{ cursor: "pointer", textDecor: "underline"}} display={{ base: "none", md: "block"}} onClick={() => router.push('/services')}>
                 Services
             </Text>
-            <Text _hover={{ cursor: "pointer"}} display={{ base: "none", md: "block"}}>
-                Contact Us
-            </Text>
             <Hide below="md">
                 <RequestButton/>
             </Hide>
             <Hide below="md">
-                <Button bg="#3E60A3" color="white" _hover={{ bg: "#365796" }} fontWeight="700">Sign In</Button>
+                <ContactButton/>
+            </Hide>
+            <Hide below="md">
+                <Button colorScheme="orange" fontWeight="700">Sign In</Button>
             </Hide>
             <Button bg="#3E60A3" color="white" _hover={{ bg: "#365796" }} display={{ base: "block", md: "none"}} width="3rem" height="3rem" onClick={onOpen}>
                 <GiHamburgerMenu/>
@@ -39,11 +41,11 @@ const Navbar = () => {
                         <Text _hover={{ textDecor: "underline", cursor: "pointer" }} onClick={() => router.push('/')}>
                             Home
                         </Text>
+                        <Text _hover={{ textDecor: "underline", cursor: "pointer" }} onClick={() => router.push('/about')}>
+                            About
+                        </Text>
                         <Text _hover={{ textDecor: "underline", cursor: "pointer" }} onClick={() => router.push('/services')}>
                             Services
-                        </Text>
-                        <Text _hover={{ textDecor: "underline", cursor: "pointer" }}>
-                            Contact Us
                         </Text>
                         <Text _hover={{ textDecor: "underline", cursor: "pointer" }}>
                             Sign In
@@ -52,6 +54,7 @@ const Navbar = () => {
                             Register
                         </Text>
                         <RequestButton/>
+                        <ContactButton/>
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
