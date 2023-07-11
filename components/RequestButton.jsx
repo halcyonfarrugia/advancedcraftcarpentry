@@ -58,7 +58,7 @@ const RequestButton = ({ width }) => {
                     {error && <Alert status="error">{error}</Alert>}
                     <HStack width="100%" spacing="1rem">
                         <Hide below="md">
-                            <Image src="quote.jpg" fit="cover" width="100%" height="sm" flex="2" borderRadius="1rem"/>
+                            <Image src="quote.jpg" alt="quote" fit="cover" width="100%" height="sm" flex="2" borderRadius="1rem"/>
                         </Hide>
                         <VStack flex="3" spacing="1rem">
                             <FormControl isRequired size>
