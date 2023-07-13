@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi"
 import { MdCall } from "react-icons/md"
 import RequestButton from "./RequestButton";
 import ContactButton from "./ContactButton";
+import Auth from "./Auth/Auth";
 
 const Navbar = () => {
     const router = useRouter();
@@ -22,13 +23,13 @@ const Navbar = () => {
                 Services
             </Text>
             <Hide below="md">
+                <Auth />
+            </Hide>
+            <Hide below="md">
                 <RequestButton/>
             </Hide>
             <Hide below="md">
                 <ContactButton/>
-            </Hide>
-            <Hide below="md">
-                <Button colorScheme="orange" fontWeight="700">Sign In</Button>
             </Hide>
             <Button bg="#3E60A3" color="white" _hover={{ bg: "#365796" }} display={{ base: "block", md: "none"}} width="3rem" height="3rem" onClick={onOpen}>
                 <GiHamburgerMenu/>
@@ -47,12 +48,7 @@ const Navbar = () => {
                         <Text _hover={{ textDecor: "underline", cursor: "pointer" }} onClick={() => router.push('/services')}>
                             Services
                         </Text>
-                        <Text _hover={{ textDecor: "underline", cursor: "pointer" }}>
-                            Sign In
-                        </Text>
-                        <Text _hover={{ textDecor: "underline", cursor: "pointer" }}>
-                            Register
-                        </Text>
+                        <Auth />
                         <RequestButton/>
                         <ContactButton/>
                     </DrawerBody>

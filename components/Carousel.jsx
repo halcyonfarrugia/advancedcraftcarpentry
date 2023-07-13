@@ -111,7 +111,7 @@ export default function Carousel() {
         {cards.map((card, index) => (
           <VStack
             key={index}
-            height={{ base: 'xl', sm: '3xl', md: '3xl', lg: '4xl', xl: '5xl' }}
+            height={{ base: 'lg', sm: '3xl', md: '3xl', lg: '4xl', xl: '5xl' }}
             position="relative"
             backgroundPosition="start"
             backgroundRepeat="no-repeat"

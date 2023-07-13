@@ -3,21 +3,24 @@ import { useState } from "react"
 import "@fontsource/manrope/700.css"
 import "@fontsource/manrope/800.css"
 import { MdCall } from "react-icons/md"
+import { addDoc, collection } from "@firebase/firestore"
+import { db } from "@/firebase/clientApp"
 
 const ContactButton = ({ width }) => {
     const [name, setName] = useState(null);
     const [email, setEmail] = useState(null);
     const [phoneNumber, setPhoneNumber] = useState(null);
+    const [address, setAddress] = useState(null);
     const [description, setDescription] = useState(null);
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [error, setError] = useState(null);
+    const [alert, setAlert] = useState(null);
 
     const handleClose = () => {
         setName(null);
         setEmail(null);
         setPhoneNumber(null);
         setDescription(null);
-        setError(null);
+        setAlert(null);
         onClose();
     };
 
@@ -26,20 +29,40 @@ const ContactButton = ({ width }) => {
         const phoneNumberRegex = /^(?:\+61|0)[2-8](?:\d){8}$/; // Check for Australian phone numbers
 
         if (!emailRegex.test(email)) {
-            setError("Invalid email");
+            setAlert({ status: "error", message: "Invalid email."});
             setTimeout(() => {
-                setError(null)
+                setAlert(null)
             }, 3000);
             return;
         }
 
         if (!phoneNumberRegex.test(phoneNumber)) {
-            setError("Invalid phone number");
+            setAlert({ status: "error", message: "Invalid phone number."});
             setTimeout(() => {
-                setError(null)
+                setAlert(null)
             }, 3000);
             return;
         };
+
+        try {
+            const messageRef = await addDoc(collection(db, "messages"), {
+                name: name,
+                email: email,
+                description: description,
+                phoneNumber: phoneNumber,
+                address: address,
+            })
+            setAlert({ message: "Successfully sent enquiry.", status: "success"})
+            setTimeout(() => {
+                handleClose();
+            }, 3000);
+        } catch (error) {
+            console.log(error);
+            setAlert({ message: "Error occurred.", status: "error"})
+            setTimeout(() => {
+                setAlert(null);
+            }, 3000);
+        }
     }
 
     return (
@@ -53,7 +76,7 @@ const ContactButton = ({ width }) => {
                 <ModalHeader fontWeight="700">Contact Us</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody as={VStack} width="100%" spacing="1rem">
-                    {error && <Alert status="error">{error}</Alert>}
+                    {alert && <Alert status={alert.status}>{alert.message}</Alert>}
                     <FormControl isRequired size>
                         <FormLabel fontWeight="700">Name</FormLabel>
                         <Input placeholder="Enter name" type="text" onChange={(e) => setName(e.target.value)}/>

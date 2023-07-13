@@ -15,7 +15,7 @@ const About = () => {
         <>
         <VStack height="100vh" width="100vw" backgroundImage="about.jpg" id="servicesSlide" overflow="scroll" align="end">
             <Navbar/>
-            <VStack paddingTop="6rem" fontFamily="Manrope" align={{ base: "center", md: "end" }} width={{ base: "sm", md: "3xl" }} spacing={{ base: "1rem", md: "1rem" }} paddingRight="2rem" color="white">
+            <VStack paddingTop="6rem" fontFamily="Manrope" align={{ base: "center", md: "end" }} width={{ base: "sm", md: "3xl" }} spacing={{ base: "1rem", md: "1rem" }} paddingRight={{ base: "0", md: "2rem" }} color="white">
                 <Text fontWeight="700" fontSize={{ base: "2rem", md: "2.25rem" }} color="white" textShadow="gray 0.1rem 0.1rem 1.5rem">
                     About Us
                 </Text>

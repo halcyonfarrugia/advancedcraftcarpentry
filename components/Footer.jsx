@@ -23,9 +23,8 @@ export default function Footer() {
         align={{ base: 'center', md: 'center' }}>
         <Stack direction={'row'} spacing={6}>
           <Link href={'/'}>Home</Link>
-          <Link href={'/'}>About</Link>
+          <Link href={'/about'}>About</Link>
           <Link href={'/services'}>Services</Link>
-          <Link href={'/'}>Contact Us</Link>
         </Stack>
         <Text>© 2023 Advanced Craft Carpentry. All rights reserved</Text>
       </Container>

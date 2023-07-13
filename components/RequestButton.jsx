@@ -3,6 +3,8 @@ import { useState } from "react"
 import "@fontsource/manrope/700.css"
 import "@fontsource/manrope/800.css"
 import { BsHammer} from "react-icons/bs"
+import { collection, addDoc } from "@firebase/firestore"
+import { db } from "@/firebase/clientApp"
 
 const RequestButton = ({ width }) => {
     const [name, setName] = useState(null);
@@ -12,7 +14,7 @@ const RequestButton = ({ width }) => {
     const [budget, setBudget] = useState(null);
     const [description, setDescription] = useState(null);
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [error, setError] = useState(null);
+    const [alert, setAlert] = useState(null);
 
     const handleClose = () => {
         setName(null);
@@ -21,7 +23,7 @@ const RequestButton = ({ width }) => {
         setAddress(null);
         setBudget(null);
         setDescription(null);
-        setError(null);
+        setAlert(null);
         onClose();
     };
 
@@ -30,20 +32,40 @@ const RequestButton = ({ width }) => {
         const phoneNumberRegex = /^(?:\+61|0)[2-8](?:\d){8}$/; // Check for Australian phone numbers
 
         if (!emailRegex.test(email)) {
-            setError("Invalid email");
+            setAlert({ status: "error", message: "Invalid email."});
             setTimeout(() => {
-                setError(null)
+                setAlert(null)
             }, 3000);
             return;
         }
 
         if (!phoneNumberRegex.test(phoneNumber)) {
-            setError("Invalid phone number");
+            setAlert({ status: "error", message: "Invalid phone number."});
             setTimeout(() => {
-                setError(null)
+                setAlert(null)
             }, 3000);
             return;
         };
+        try {
+            const quoteRef = await addDoc(collection(db, "quotes"), {
+                name: name,
+                email: email,
+                description: description,
+                phoneNumber: phoneNumber,
+                address: address,
+                budget: budget,
+            })
+            setAlert({ message: "Quote successfully sent.", status: "success" })
+            setTimeout(() => {
+                handleClose();
+            }, 4000)
+        } catch (error) {
+            console.log(error);
+            setAlert({ message: "Error occurred.", status: "error" })
+            setTimeout(() => {
+                setAlert(null);
+            }, 4000)
+        }
     }
 
     return (
@@ -55,7 +77,7 @@ const RequestButton = ({ width }) => {
                 <ModalHeader fontWeight="700">Request a Quote</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody as={VStack} width="100%" spacing="1rem">
-                    {error && <Alert status="error">{error}</Alert>}
+                    {alert && <Alert status={alert.status}>{alert.message}</Alert>}
                     <HStack width="100%" spacing="1rem">
                         <Hide below="md">
                             <Image src="quote.jpg" alt="quote" fit="cover" width="100%" height="sm" flex="2" borderRadius="1rem"/>
